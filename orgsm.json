@@ -1,0 +1,11 @@
+{
+  "orgsm_schema": 1,
+  "manifest_id": "mf_orgsm0001",
+  "name": "orgsm/orgsm",
+  "version": "1.0.0",
+  "namespace": "orgsm",
+  "intent": "skill-governance",
+  "targets": ["orgsm"],
+  "description": "Govern the org's agent skills with the orgsm CLI — install approved skills, keep them current, and check a skill is allowed before use.",
+  "compliance": { "generated_by": "manual", "spec_lint": "pass", "compliance_lint": "pass" }
+}
