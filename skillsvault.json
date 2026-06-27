@@ -1,11 +1,11 @@
 {
-  "orgnsm_schema": 1,
-  "manifest_id": "mf_orgnsm0001",
-  "name": "orgnsm/orgnsm",
+  "skillsvault_schema": 1,
+  "manifest_id": "mf_skillsvault0001",
+  "name": "skillsvault/skillsvault",
   "version": "1.0.0",
-  "namespace": "orgnsm",
+  "namespace": "skillsvault",
   "intent": "skill-governance",
-  "targets": ["orgnsm"],
+  "targets": ["skillsvault"],
   "description": "Govern the org's agent skills with the orgsm CLI — install approved skills, keep them current, and check a skill is allowed before use.",
   "compliance": { "generated_by": "manual", "spec_lint": "pass", "compliance_lint": "pass" }
 }
