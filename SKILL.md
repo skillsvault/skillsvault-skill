@@ -40,7 +40,7 @@ skillsvault login --key <agent-key> --org <org-slug>
 ### 1b. Install the CLI (only if `skillsvault` is missing)
 
 ```
-curl -fsSL https://skillsvault.vercel.app/install.sh | sh
+curl -fsSL https://skillsvault.io/install.sh | sh
 ```
 
 If you cannot run that, ask the user to install the `skillsvault` CLI, then retry.
