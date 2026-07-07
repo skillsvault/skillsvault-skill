@@ -1,4 +1,4 @@
-# skillsvault — the skill
+# The skillset to operate your skillsvault
 
 > Copyright (c) 2026 skillsvault. All rights reserved.
 
