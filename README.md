@@ -1,4 +1,4 @@
-# skillsvault — the Orgsm skill
+# skillsvault — the skill
 
 > Copyright (c) 2026 skillsvault. All rights reserved.
 
