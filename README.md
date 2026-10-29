@@ -51,8 +51,7 @@ The first time Claude uses it, run `/mcp` and sign in to skillsvault: you pick y
 
 The same repository is a plugin for other agents too. Each one signs you in to skillsvault the first time it connects:
 
-- **Cursor:** install from the Cursor Marketplace, or add the MCP server `https://skillsvault.io/api/mcp`.
-- **Codex and ChatGPT:** the plugin follows the [Agent Plugins](https://agent-plugins.org) standard (`plugin.json`, `mcp.json`, `skills/`).
+- **Cursor, Codex and ChatGPT:** add the MCP server `https://skillsvault.io/api/mcp`. Marketplace listings are on their way; the plugin already follows the [Agent Plugins](https://agent-plugins.org) standard (`plugin.json`, `mcp.json`, `skills/`).
 - **Gemini CLI:** `gemini extensions install https://github.com/skillsvault/skillsvault-skill`
 - **Anything else that speaks MCP:** add `https://skillsvault.io/api/mcp`. It is listed in the official MCP Registry as `io.skillsvault/skillsvault`.
 
