@@ -34,6 +34,25 @@ skillsvault login
 skillsvault pull --all
 ```
 
+### As a Claude Code plugin
+
+```bash
+claude plugin marketplace add skillsvault/skillsvault-skill
+claude plugin install skillsvault@skillsvault
+```
+
+Claude Code asks for an **agent key** (skillsvault.io → Settings → Agent keys) and stores it in your system keychain. The plugin adds:
+
+- **The skillsvault skill**: the same skill as above.
+- **The skillsvault MCP server**: `list_skills`, `load_skill` and `get_skill_file` let Claude read your organisation's approved skills. All three are read-only. A skill your policies block is refused, with the reason.
+- **The gate hook**: before Claude runs a skill, subagent or typed `/command`, it asks the `skillsvault` CLI whether your organisation allows it. A block shows the policy's reason and a link to request an exception. The hook does nothing until the CLI is installed, and steps aside if `skillsvault install-hook` already wired the gate.
+
+### What it sends, and where
+
+- **MCP server.** It calls `https://skillsvault.io/api/mcp` with your agent key. It sends the skill names Claude asks for, and receives your organisation's skill content. Each load is recorded in your organisation's audit log.
+- **Gate hook.** It runs on your machine against a signed copy of your organisation's policies, with no network call per decision. The CLI reports each decision (skill name and version, decision, reason, machine name) to your organisation's audit log. It also sends a periodic heartbeat (CLI version, whether the gate hook is wired, and the names of the skills installed on the machine), so your organisation can see which machines are covered.
+- **Nothing else.** Nothing is sent anywhere other than skillsvault.io. Your prompts and code are never sent. See the [privacy policy](https://skillsvault.io/privacy).
+
 ## 🎬 See it work
 
 <div align="center">
@@ -82,7 +101,7 @@ Three rules the skill enforces, always:
 
 ## License
 
-Proprietary — property of skillsvault. See [LICENSE](./LICENSE).
+Apache-2.0 — see [LICENSE](./LICENSE). This covers the skill and plugin in this repository; the skillsvault service is governed by its [terms](https://skillsvault.io/agb).
 
 <div align="center">
 <sub>Built in Germany 🇩🇪 · <a href="https://skillsvault.io">skillsvault.io</a> · <a href="mailto:info@skillsvault.io">info@skillsvault.io</a></sub>

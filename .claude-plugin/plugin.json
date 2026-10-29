@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "skillsvault",
+  "displayName": "skillsvault",
+  "version": "1.0.0",
+  "description": "Your organisation's governed skill registry in Claude Code: load the skills your org approved, and block the ones its policies don't allow, with a link to request an exception.",
+  "author": { "name": "skillsvault", "url": "https://skillsvault.io" },
+  "homepage": "https://skillsvault.io/docs",
+  "repository": "https://github.com/skillsvault/skillsvault-skill",
+  "license": "Apache-2.0",
+  "keywords": ["skills", "governance", "policy", "registry", "security", "audit", "mcp"],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://skillsvault.io/docs",
+  "supportUrl": "https://skillsvault.io/docs/debugging",
+  "privacyPolicyUrl": "https://skillsvault.io/privacy",
+  "termsOfServiceUrl": "https://skillsvault.io/agb",
+  "userConfig": {
+    "agent_key": {
+      "type": "string",
+      "title": "skillsvault agent key",
+      "description": "An agent key from skillsvault.io → Settings → Agent keys (the Free plan includes one). It lets Claude list and load your organisation's approved skills.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

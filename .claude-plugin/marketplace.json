@@ -1,0 +1,13 @@
+{
+  "name": "skillsvault",
+  "owner": { "name": "skillsvault", "url": "https://skillsvault.io" },
+  "metadata": { "description": "skillsvault: governed agent skills for your organisation." },
+  "plugins": [
+    {
+      "name": "skillsvault",
+      "source": "./",
+      "description": "Load your organisation's approved skills and enforce its skill policies in Claude Code.",
+      "category": "security"
+    }
+  ]
+}
