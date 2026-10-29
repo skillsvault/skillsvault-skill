@@ -2,8 +2,7 @@
   "mcpServers": {
     "skillsvault": {
       "type": "http",
-      "url": "https://skillsvault.io/api/mcp",
-      "headers": { "Authorization": "Bearer ${user_config.agent_key}" }
+      "url": "https://skillsvault.io/api/mcp"
     }
   }
 }
