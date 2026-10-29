@@ -3,21 +3,16 @@
   "name": "io.skillsvault/skillsvault",
   "title": "skillsvault",
   "description": "Your organisation's approved agent skills, governed by its policies.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://skillsvault.io",
-  "repository": { "url": "https://github.com/skillsvault/skillsvault-skill", "source": "github" },
+  "repository": {
+    "url": "https://github.com/skillsvault/skillsvault-skill",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://skillsvault.io/api/mcp",
-      "headers": [
-        {
-          "name": "Authorization",
-          "description": "Bearer <agent key> — create one at skillsvault.io → Settings → Agent keys",
-          "isRequired": true,
-          "isSecret": true
-        }
-      ]
+      "url": "https://skillsvault.io/api/mcp"
     }
   ]
 }

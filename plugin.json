@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skillsvault",
+  "version": "1.1.0",
+  "description": "Your organisation's approved agent skills, governed by its policies: load what's approved, block what isn't, and log every run.",
+  "author": {
+    "name": "skillsvault",
+    "url": "https://skillsvault.io"
+  },
+  "homepage": "https://skillsvault.io/docs",
+  "repository": "https://github.com/skillsvault/skillsvault-skill",
+  "license": "Apache-2.0",
+  "keywords": [
+    "skills",
+    "governance",
+    "policy",
+    "registry",
+    "security",
+    "audit",
+    "mcp"
+  ]
+}

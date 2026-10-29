@@ -41,15 +41,24 @@ claude plugin marketplace add skillsvault/skillsvault-skill
 claude plugin install skillsvault@skillsvault
 ```
 
-Claude Code asks for an **agent key** (skillsvault.io → Settings → Agent keys) and stores it in your system keychain. The plugin adds:
+The first time Claude uses it, run `/mcp` and sign in to skillsvault: you pick your organisation, and no key is pasted or stored in a file. The plugin adds:
 
 - **The skillsvault skill**: the same skill as above.
 - **The skillsvault MCP server**: `list_skills`, `load_skill` and `get_skill_file` let Claude read your organisation's approved skills. All three are read-only. A skill your policies block is refused, with the reason.
 - **The gate hook**: before Claude runs a skill, subagent or typed `/command`, it asks the `skillsvault` CLI whether your organisation allows it. A block shows the policy's reason and a link to request an exception. The hook does nothing until the CLI is installed, and steps aside if `skillsvault install-hook` already wired the gate.
 
+### In other agents
+
+The same repository is a plugin for other agents too. Each one signs you in to skillsvault the first time it connects:
+
+- **Cursor:** install from the Cursor Marketplace, or add the MCP server `https://skillsvault.io/api/mcp`.
+- **Codex and ChatGPT:** the plugin follows the [Agent Plugins](https://agent-plugins.org) standard (`plugin.json`, `mcp.json`, `skills/`).
+- **Gemini CLI:** `gemini extensions install https://github.com/skillsvault/skillsvault-skill`
+- **Anything else that speaks MCP:** add `https://skillsvault.io/api/mcp`. It is listed in the official MCP Registry as `io.skillsvault/skillsvault`.
+
 ### What it sends, and where
 
-- **MCP server.** It calls `https://skillsvault.io/api/mcp` with your agent key. It sends the skill names Claude asks for, and receives your organisation's skill content. Each load is recorded in your organisation's audit log.
+- **MCP server.** It calls `https://skillsvault.io/api/mcp` as you, once you sign in. It sends the skill names Claude asks for, and receives your organisation's skill content. Each load is recorded in your organisation's audit log.
 - **Gate hook.** It runs on your machine against a signed copy of your organisation's policies, with no network call per decision. The CLI reports each decision (skill name and version, decision, reason, machine name) to your organisation's audit log. It also sends a periodic heartbeat (CLI version, whether the gate hook is wired, and the names of the skills installed on the machine), so your organisation can see which machines are covered.
 - **Nothing else.** Nothing is sent anywhere other than skillsvault.io. Your prompts and code are never sent. See the [privacy policy](https://skillsvault.io/privacy).
 
@@ -96,8 +105,8 @@ Three rules the skill enforces, always:
 
 - 📖 [Documentation](https://skillsvault.io/docs) — CLI reference, policies, the signed bundle contract
 - 🚀 [Quickstart](https://skillsvault.io/docs/quickstart) — zero to governed in five minutes
-- 🔍 [`SKILL.md`](./SKILL.md) — the skill itself, exactly what your agent reads
-- 🧾 [`references/cli.md`](./references/cli.md) — full command reference
+- 🔍 [`SKILL.md`](./skills/skillsvault/SKILL.md) — the skill itself, exactly what your agent reads
+- 🧾 [`references/cli.md`](./skills/skillsvault/references/cli.md) — full command reference
 
 ## License
 
