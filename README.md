@@ -101,7 +101,7 @@ Three rules the skill enforces, always:
 
 ## License
 
-Proprietary — property of skillsvault. See [LICENSE](./LICENSE).
+Apache-2.0 — see [LICENSE](./LICENSE). This covers the skill and plugin in this repository; the skillsvault service is governed by its [terms](https://skillsvault.io/agb).
 
 <div align="center">
 <sub>Built in Germany 🇩🇪 · <a href="https://skillsvault.io">skillsvault.io</a> · <a href="mailto:info@skillsvault.io">info@skillsvault.io</a></sub>

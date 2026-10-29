@@ -7,7 +7,7 @@
   "author": { "name": "skillsvault", "url": "https://skillsvault.io" },
   "homepage": "https://skillsvault.io/docs",
   "repository": "https://github.com/skillsvault/skillsvault-skill",
-  "license": "LicenseRef-skillsvault",
+  "license": "Apache-2.0",
   "keywords": ["skills", "governance", "policy", "registry", "security", "audit", "mcp"],
   "icon": "./assets/icon.png",
   "documentationUrl": "https://skillsvault.io/docs",
