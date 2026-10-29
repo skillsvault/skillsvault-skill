@@ -1,0 +1,11 @@
+{
+  "description": "Runs the skillsvault gate before a skill, subagent or typed /command, when the skillsvault CLI is installed.",
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Skill|Agent|Task", "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}\"/hooks/gate.sh", "timeout": 10 }] }
+    ],
+    "UserPromptExpansion": [
+      { "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}\"/hooks/gate.sh", "timeout": 10 }] }
+    ]
+  }
+}
