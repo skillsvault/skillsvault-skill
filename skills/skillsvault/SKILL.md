@@ -39,8 +39,12 @@ skillsvault login --key <agent-key> --org <org-slug>
 
 ### 1b. Install the CLI (only if `skillsvault` is missing)
 
+Download the installer, read it, then run it. It fetches the CLI from the GitHub release and
+checks it against that release's published SHA-256 checksums before installing anything.
+
 ```
-curl -fsSL https://skillsvault.io/install.sh | sh
+curl -fsSL https://skillsvault.io/install.sh -o skillsvault-install.sh
+sh skillsvault-install.sh && rm skillsvault-install.sh
 ```
 
 If you cannot run that, ask the user to install the `skillsvault` CLI, then retry.

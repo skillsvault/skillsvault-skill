@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "skillsvault",
   "displayName": "skillsvault",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Your organisation's governed skill registry in Claude Code: load the skills your org approved, and block the ones its policies don't allow, with a link to request an exception.",
   "author": {
     "name": "skillsvault",
