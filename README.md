@@ -8,6 +8,8 @@
 [![Docs](https://img.shields.io/badge/docs-read-6d5be3?style=for-the-badge)](https://skillsvault.io/docs)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge)](./LICENSE)
 
+[![skillsvault](https://skillsvault.io/api/badge/skillsvault/skillsvault-skill/skillsvault.svg)](https://skillsvault.io/explore/skillsvault/skillsvault-skill/skillsvault)
+
 **The control plane for agent skills.**
 One skill that connects your agent to your organisation's registry —
 install what's approved, block what's banned, audit everything.
