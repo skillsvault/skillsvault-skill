@@ -31,4 +31,15 @@ runs:
         args=(scan --dir "$SCAN_PATH")
         if [ "$FAIL_ON_FLAG" = "true" ]; then args+=(--fail-on-flag); fi
         # An empty HOME: scan this repository, not the runner's own agents.
-        HOME="$RUNNER_TEMP/skillsvault/home" skillsvault "${args[@]}"
+        set +e
+        HOME="$RUNNER_TEMP/skillsvault/home" skillsvault "${args[@]}" 2>&1 | tee "$RUNNER_TEMP/skillsvault/scan.txt"
+        status=${PIPESTATUS[0]}
+        set -e
+        # The result on the run's summary page too.
+        {
+          echo "### skillsvault scan"
+          echo '```'
+          cat "$RUNNER_TEMP/skillsvault/scan.txt"
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+        exit "$status"
