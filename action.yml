@@ -1,0 +1,34 @@
+name: skillsvault scan
+description: Scan the agent skills in this repository for risky patterns (curl | sh, secret paths, hidden content) on every push and pull request.
+author: skillsvault
+branding:
+  icon: shield
+  color: purple
+inputs:
+  path:
+    description: Folder to scan. Every folder with a SKILL.md under it is checked as a skill.
+    default: "."
+  fail-on-flag:
+    description: Fail the job when a skill is flagged.
+    default: "true"
+runs:
+  using: composite
+  steps:
+    - name: Install the skillsvault CLI
+      shell: bash
+      run: |
+        # The installer checks the CLI against the release's SHA-256 checksums.
+        mkdir -p "$RUNNER_TEMP/skillsvault/bin"
+        curl -fsSL https://skillsvault.io/install.sh -o "$RUNNER_TEMP/skillsvault/install.sh"
+        SKILLSVAULT_BIN_DIR="$RUNNER_TEMP/skillsvault/bin" sh "$RUNNER_TEMP/skillsvault/install.sh"
+        echo "$RUNNER_TEMP/skillsvault/bin" >> "$GITHUB_PATH"
+    - name: Scan
+      shell: bash
+      env:
+        SCAN_PATH: ${{ inputs.path }}
+        FAIL_ON_FLAG: ${{ inputs.fail-on-flag }}
+      run: |
+        args=(scan --dir "$SCAN_PATH")
+        if [ "$FAIL_ON_FLAG" = "true" ]; then args+=(--fail-on-flag); fi
+        # An empty HOME: scan this repository, not the runner's own agents.
+        HOME="$RUNNER_TEMP/skillsvault/home" skillsvault "${args[@]}"

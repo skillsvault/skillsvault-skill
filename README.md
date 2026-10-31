@@ -102,6 +102,27 @@ Three rules the skill enforces, always:
 2. The approved version from `pull` beats any sideloaded copy.
 3. A halt is never bypassed — the verdict names the approved replacement.
 
+## 🔎 Scan your skills in CI
+
+Publishing skills? Check them on every push and pull request. The action installs the CLI (verified against the release checksums), scans every folder with a `SKILL.md`, and fails the job when one pipes a download into a shell, reads secret paths or hides content. Nothing is sent anywhere.
+
+```yaml
+# .github/workflows/skills.yml
+name: skills
+on: [push, pull_request]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: skillsvault/skillsvault-skill@main
+        with:
+          path: skills          # default: the whole repository
+          fail-on-flag: true    # default
+```
+
+Locally, the same check is `skillsvault scan --dir skills --fail-on-flag`.
+
 ## 📚 Learn more
 
 - 📖 [Documentation](https://skillsvault.io/docs) — CLI reference, policies, the signed bundle contract
