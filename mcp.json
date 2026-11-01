@@ -3,7 +3,21 @@
   "mcpServers": {
     "skillsvault": {
       "type": "streamable-http",
-      "url": "https://skillsvault.io/api/mcp"
+      "url": "https://skillsvault.io/api/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr",
+              "tokenEndpointAuthMethod": "none"
+            },
+            "baseScopes": [
+              "mcp"
+            ]
+          }
+        }
+      }
     }
   }
 }

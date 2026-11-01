@@ -18,5 +18,30 @@
     "security",
     "audit",
     "mcp"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "skillsvault",
+        "shortDescription": "Your team's approved skills",
+        "longDescription": "skillsvault is your organisation's registry of approved agent skills. Ask for a skill by task (\"fill pdf forms\", \"deploy the web app\") and ChatGPT lists the ones your organisation approved, then loads the right one's instructions. Policies apply exactly as on your developers' machines: banned skills and skills a Block policy covers are refused, deprecated ones come with a warning, and every load is recorded in your organisation's audit log under your name. Read-only: it never changes your registry. Requires a skillsvault account; sign in with your organisation when you connect.",
+        "developerName": "skillsvault",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://skillsvault.io",
+        "supportURL": "https://skillsvault.io/docs/mcp",
+        "privacyPolicyURL": "https://skillsvault.io/privacy",
+        "termsOfServiceURL": "https://skillsvault.io/agb",
+        "defaultPrompt": [
+          "Which of our approved skills can fill in a PDF form?",
+          "Load our deploy skill and walk me through it."
+        ],
+        "brandColor": "#6D4DE6",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      }
+    }
+  }
 }
