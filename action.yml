@@ -11,6 +11,9 @@ inputs:
   fail-on-flag:
     description: Fail the job when a skill is flagged.
     default: "true"
+  sarif:
+    description: Also write the findings as SARIF 2.1.0 to this file, for github/codeql-action/upload-sarif (alerts on the pull request). Needs CLI 0.6.11.
+    default: ""
 runs:
   using: composite
   steps:
@@ -27,6 +30,7 @@ runs:
       env:
         SCAN_PATH: ${{ inputs.path }}
         FAIL_ON_FLAG: ${{ inputs.fail-on-flag }}
+        SARIF_FILE: ${{ inputs.sarif }}
       run: |
         args=(scan --dir "$SCAN_PATH")
         if [ "$FAIL_ON_FLAG" = "true" ]; then args+=(--fail-on-flag); fi
@@ -34,6 +38,11 @@ runs:
         set +e
         HOME="$RUNNER_TEMP/skillsvault/home" skillsvault "${args[@]}" 2>&1 | tee "$RUNNER_TEMP/skillsvault/scan.txt"
         status=${PIPESTATUS[0]}
+        # SARIF before deciding the job's result, so it can be uploaded even
+        # when a flag fails the job (upload with `if: always()`).
+        if [ -n "$SARIF_FILE" ]; then
+          HOME="$RUNNER_TEMP/skillsvault/home" skillsvault scan --dir "$SCAN_PATH" --sarif > "$SARIF_FILE"
+        fi
         set -e
         # The result on the run's summary page too.
         {

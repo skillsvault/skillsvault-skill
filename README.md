@@ -121,7 +121,24 @@ jobs:
           fail-on-flag: true    # default
 ```
 
-Locally, the same check is `skillsvault scan --dir skills --fail-on-flag`.
+To see findings as code-scanning alerts on the pull request, write SARIF and upload it:
+
+```yaml
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: skillsvault/skillsvault-skill@main
+        with:
+          path: skills
+          sarif: skillsvault.sarif
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: skillsvault.sarif
+```
+
+Locally, the same check is `skillsvault scan --dir skills --fail-on-flag` (add `--sarif` for SARIF).
 
 ## 📚 Learn more
 
